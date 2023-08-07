@@ -43,7 +43,7 @@ jobs:
 
       - name: Install ESO and Vaultwarden dependencies for testing
         run: |
-          helm repo add vaultwarden https://guerzon.github.io/vaultwarden
+          helm repo add vaultwarden https://jessebot.github.io/vaultwarden
           helm repo add external-secrets https://charts.external-secrets.io
           helm repo update
           helm install vaultwarden vaultwarden
