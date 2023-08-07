@@ -10,7 +10,7 @@ helm install my-release bitwarden-eso-provider
 ```
 
 # Example Secret
-By default we will create two [`ClusterSecretStore`s](https://external-secrets.io/latest/introduction/overview/#clustersecretstore) for you that can then be accessed when you create a secret like this:
+By default we will create two [`ClusterSecretStore`s](https://external-secrets.io/latest/introduction/overview/#clustersecretstore) for you that can then be accessed when you create a secret like [this](./examples/example-secret.yaml), but also printed below here:
 
 ```yaml
 # The `key` is actually the `name` of your secret in bitwarden
