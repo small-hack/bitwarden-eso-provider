@@ -28,11 +28,11 @@ spec:
     template:
       type: Opaque
       data:
-        # The kuberntest secret name
+        # The kubernetes secret name
         password: |-
           {{ .password }}
   data:
-    # the value to pass to the keubernetes secret.
+    # the value to pass to the kubernetes secret.
     - secretKey: password
       sourceRef:
         storeRef:
