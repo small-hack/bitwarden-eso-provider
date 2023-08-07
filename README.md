@@ -13,41 +13,37 @@ helm install my-release bitwarden-eso-provider
 By default we will create two [`ClusterSecretStore`s](https://external-secrets.io/latest/introduction/overview/#clustersecretstore) for you that can then be accessed when you create a secret like [this](./examples/example-secret.yaml), but also printed below here:
 
 ```yaml
-# The `key` is actually the `name` of your secret in bitwarden
+---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: example-secret
-  namespace: default
+  # this is the name of the ExternalSecret object
+  name: cool-secret-4-dogs
+  namespace: coolapp4dogs
 spec:
   target:
-    name: example-secret
+    # This is the name of the secret in bitwarden
+    name: cool-secret
     deletionPolicy: Delete
     template:
       type: Opaque
       data:
-        # this key will be in the rendered Kubetenes Secret manifest
-        username: |-
-          {{ .username }}
+      # The kuberntest secret name
         password: |-
           {{ .password }}
   data:
-    - secretKey: username
-      sourceRef:
-        storeRef:
-          name: bitwarden-login
-          kind: ClusterSecretStore
-      remoteRef:
-        # `key` is actually the `name` of your item in bitwarden
-        key: my-bitwarden-secret-name
-        # this is the field in the bitwarden item
-        property: username
+    # the value to pass to the keubernetes secret.
     - secretKey: password
       sourceRef:
         storeRef:
+          # Use the `bitwarden-login` store to get `username` and
+          # `password` values from a bitwarden secret that does not
+          # contain custom fields, Otherwise use `bitwarden-fields'
           name: bitwarden-login
           kind: ClusterSecretStore
       remoteRef:
-        key: my-bitwarden-secret-name
-        property: password
+        # This is the `name` of your bitwarden secret. 
+        key: <your-secret-name>
+        # This is the property of the bitwarden secret that we want
+        property: <some-secret-property>
 ```
