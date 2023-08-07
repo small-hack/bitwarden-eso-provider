@@ -41,9 +41,12 @@ jobs:
         uses: helm/kind-action@v1.8.0
         if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Install ESO dependency for testing
+      - name: Install ESO and Vaultwarden dependencies for testing
         run: |
+          helm repo add vaultwarden https://guerzon.github.io/vaultwarden
           helm repo add external-secrets https://charts.external-secrets.io
+          helm repo update
+          helm install vaultwarden vaultwarden
           helm install external-secrets external-secrets/external-secrets
 
       - name: Run chart-testing (install)
