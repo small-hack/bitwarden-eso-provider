@@ -28,7 +28,7 @@ spec:
     template:
       type: Opaque
       data:
-      # The kuberntest secret name
+        # The kuberntest secret name
         password: |-
           {{ .password }}
   data:
