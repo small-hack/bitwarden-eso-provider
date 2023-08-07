@@ -42,12 +42,11 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Install ESO and Vaultwarden dependencies for testing
-        # we'll add these back when they're working upstream
-        # helm repo add vaultwarden https://jessebot.github.io/vaultwarden
-        # helm install vaultwarden vaultwarden
         run: |
+          helm repo add vaultwarden https://jessebot.github.io/vaultwarden
           helm repo add external-secrets https://charts.external-secrets.io
           helm repo update
+          helm install bitwarden vaultwarden/vaultwarden --set domain="https://bw.example.com:8443"
           helm install external-secrets external-secrets/external-secrets
 
       - name: Run chart-testing (install)
