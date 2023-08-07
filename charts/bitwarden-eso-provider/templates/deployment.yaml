@@ -37,23 +37,23 @@ spec:
             - name: BW_HOST
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Values.bitwarden_eso_provider.existingSecret | default .Release.Name }}"
-                  key: BW_HOST
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.host }}
             - name: BW_CLIENTID
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Values.bitwarden_eso_provider.existingSecret | default .Release.Name }}"
-                  key: BW_CLIENTID
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.clientID }}
             - name: BW_CLIENTSECRET
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Values.bitwarden_eso_provider.existingSecret | default .Release.Name }}"
-                  key: BW_CLIENTSECRET
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.clientSecret }}
             - name: BW_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Values.bitwarden_eso_provider.existingSecret | default .Release.Name }}"
-                  key: BW_PASSWORD
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.password }}
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
