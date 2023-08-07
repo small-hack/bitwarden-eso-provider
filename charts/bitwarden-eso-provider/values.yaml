@@ -21,6 +21,16 @@ bitwarden_eso_provider:
   # -- if set to True, we'll create a cluster-wide accessible Cluster Secret Store
   # see: https://external-secrets.io/latest/introduction/overview/#clustersecretstore
   create_cluster_secret_store: True
+  # -- bitwarden client Secret to use to grabs secrets in the pod
+  clientSecret: ""
+  # -- bitwarden client ID to use to grabs secrets in the pod
+  clientID: ""
+  # -- bitwarden username to use to grabs secrets in the pod
+  username: ""
+  # -- bitwarden hostname to use to grab secrets in the pod
+  host: "https://bitwarden.com"
+  # -- use an existing secret for your bitwarden credentials
+  existingSecret: ""
 
 serviceAccount:
   # -- Specifies whether a service account should be created

@@ -20,7 +20,12 @@ A Helm chart for Kubernetes
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| bitwarden_eso_provider.clientID | string | `""` | bitwarden client ID to use to grabs secrets in the pod |
+| bitwarden_eso_provider.clientSecret | string | `""` | bitwarden client Secret to use to grabs secrets in the pod |
 | bitwarden_eso_provider.create_cluster_secret_store | bool | `true` | if set to True, we'll create a cluster-wide accessible Cluster Secret Store see: https://external-secrets.io/latest/introduction/overview/#clustersecretstore |
+| bitwarden_eso_provider.existingSecret | string | `""` | use an existing secret for your bitwarden credentials |
+| bitwarden_eso_provider.host | string | `"https://bitwarden.com"` | bitwarden hostname to use to grab secrets in the pod |
+| bitwarden_eso_provider.username | string | `""` | bitwarden username to use to grabs secrets in the pod |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` | Overrides the image pullPolicy. Hint: set to Always if using latest tag |
 | image.repository | string | `"deserializeme/bweso"` | Overrides the image repository |
