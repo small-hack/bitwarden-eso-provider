@@ -10,6 +10,7 @@ spec:
   containers:
     - name: wget
       image: busybox
-      command: ['wget']
-      args: ['{{ include "bitwarden-eso-provider.fullname" . }}:{{ .Values.service.port }}']
+      command: ['curl']
+      # see https://bitwarden.com/help/vault-management-api/
+      args: ['{{ include "bitwarden-eso-provider.fullname" . }}:{{ .Values.service.port }}/status']
   restartPolicy: Never
