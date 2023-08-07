@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bitwarden-eso-provider.fullname" . }}
+  labels:
+    {{- include "bitwarden-eso-provider.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "bitwarden-eso-provider.selectorLabels" . | nindent 4 }}
