@@ -20,7 +20,7 @@ fullnameOverride: ""
 bitwarden_eso_provider:
   # -- if set to True, we'll create a cluster-wide accessible Cluster Secret Store
   # see: https://external-secrets.io/latest/introduction/overview/#clustersecretstore
-  create_cluster_secret_store: True
+  create_cluster_secret_store: true
   auth:
     # -- password for bitwarden
     password: ""
@@ -41,7 +41,6 @@ bitwarden_eso_provider:
       clientID: "BW_CLIENTID"
       # -- secret key for bitwarden hostname to use to grab secrets in the pod
       host: "BW_HOST"
-    
 
 serviceAccount:
   # -- Specifies whether a service account should be created
