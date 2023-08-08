@@ -46,4 +46,4 @@ jobs:
       - name: Run chart-testing (install)
         id: install
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct install --target-branch ${{ github.event.repository.default_branch }} --helm-extra-set-args="--set=bitwarden_eso_provider.create_cluster_secret_store=false --set=bitwarden_eso_provider.auth.password=$BOT_PASSWORD --set=bitwarden_eso_provider.auth.clientID=$BOT_CLIENT_ID --set=bitwarden_eso_provider.auth.clientSecret=$BOT_CLIENT_SECRET"
+        run: ct install --target-branch ${{ github.event.repository.default_branch }} --helm-extra-set-args="--set=bitwarden_eso_provider.create_cluster_secret_store=false --set=bitwarden_eso_provider.auth.password=${BOT_PASSWORD} --set=bitwarden_eso_provider.auth.clientID=${BOT_CLIENT_ID} --set=bitwarden_eso_provider.auth.clientSecret=${BOT_CLIENT_SECRET}"
