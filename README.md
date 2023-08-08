@@ -4,7 +4,7 @@
 Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden®️.</sub>
 
 ## Usage
-For helm, see the [README](./charts/bitwarden-eso-provider/README.md) for full details of the allowed values in [`values.yaml`](./charts/bitwarden-eso-provider/values.yaml), but, provided you already installed the Externeral secrets operator, this is the gist:
+For helm, see the [README](./charts/bitwarden-eso-provider/README.md) for full details of the allowed values in [`values.yaml`](./charts/bitwarden-eso-provider/values.yaml), but, provided you _already installed the Externeral secrets operator_, this is the gist:
 
 ```bash
 helm repo add bitwarden-eso-provider https://jessebot.github.io/bitwarden-eso-provider
