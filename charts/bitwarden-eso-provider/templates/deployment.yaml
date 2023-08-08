@@ -33,18 +33,52 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: BW_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.host }}
+            - name: BW_CLIENTID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.clientID }}
+            - name: BW_CLIENTSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.clientSecret }}
+            - name: BW_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.password }}
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+                - wget
+                - -q
+                - http://127.0.0.1:{{ .Values.service.targetPort }}/sync
+                - --post-data=''
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 20
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          startupProbe:
+            tcpSocket:
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 10
+            failureThreshold: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

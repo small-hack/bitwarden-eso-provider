@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -20,6 +20,15 @@ A Helm chart for Kubernetes
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| bitwarden_eso_provider.auth.clientID | string | `""` | bitwarden client ID to use to grabs secrets in the pod, ignored if existingSecret is set |
+| bitwarden_eso_provider.auth.clientSecret | string | `""` | bitwarden client Secret to use to grabs secrets in the pod, ignored if existingSecret is set |
+| bitwarden_eso_provider.auth.existingSecret | string | `""` | use an existing secret for bitwarden credentials, ignores above credentials if this is set |
+| bitwarden_eso_provider.auth.host | string | `"https://bitwarden.com"` | bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set |
+| bitwarden_eso_provider.auth.password | string | `""` | password for bitwarden |
+| bitwarden_eso_provider.auth.secretKeys.clientID | string | `"BW_CLIENTID"` | secret key for bitwarden client ID to use to grabs secrets in the pod |
+| bitwarden_eso_provider.auth.secretKeys.clientSecret | string | `"BW_CLIENTSECRET"` | secret key for bitwarden client Secret to use to grabs secrets in the pod |
+| bitwarden_eso_provider.auth.secretKeys.host | string | `"BW_HOST"` | secret key for bitwarden hostname to use to grab secrets in the pod |
+| bitwarden_eso_provider.auth.secretKeys.password | string | `"BW_PASSWORD"` | secret key for bitwarden password key |
 | bitwarden_eso_provider.create_cluster_secret_store | bool | `true` | if set to True, we'll create a cluster-wide accessible Cluster Secret Store see: https://external-secrets.io/latest/introduction/overview/#clustersecretstore |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` | Overrides the image pullPolicy. Hint: set to Always if using latest tag |

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-connection
+data:
+  curl_script.sh: |
+    curl http://{{ include "bitwarden-eso-provider.fullname" . }}:{{ .Values.service.port }}/status

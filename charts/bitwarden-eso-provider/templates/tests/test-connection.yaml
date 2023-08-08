@@ -8,8 +8,19 @@ metadata:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['{{ include "bitwarden-eso-provider.fullname" . }}:{{ .Values.service.port }}']
+    - name: curl
+      image: curlimages/curl
+      command: ['/bin/sh']
+      args:
+        - "-c"
+        - "/testing/curl_script.sh"
+      volumeMounts:
+        - name: curl-script
+          mountPath: "/testing"
+          readOnly: false
+  volumes:
+    - name: curl-script
+      configMap:
+        name: test-connection
+        defaultMode: 0777
   restartPolicy: Never

@@ -1,8 +1,9 @@
-FROM debian:sid
+FROM debian:bookworm-slim
 
-ENV BW_CLI_VERSION=2023.1.0
+ENV BW_CLI_VERSION=2023.7.0
 
 RUN apt update && \
+    apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
     apt install -y wget unzip && \
     wget https://github.com/bitwarden/clients/releases/download/cli-v${BW_CLI_VERSION}/bw-linux-${BW_CLI_VERSION}.zip && \
     unzip bw-linux-${BW_CLI_VERSION}.zip && \
@@ -24,5 +25,9 @@ RUN useradd -ms /bin/bash $USER && \
 # Swap to user account
 USER $USER
 WORKDIR /home/$USER/
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 CMD ["/bin/bash", "/usr/bin/entrypoint.sh"]
