@@ -1,16 +1,19 @@
 FROM debian:bookworm-slim
 
-# note to self: we need to have renovate bot update this somehow...
+# note to self: we need to have renovate bot update this somehow
 ENV BW_CLI_VERSION=2023.7.0
 
 RUN apt update && \
     apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
-    apt install -y wget unzip && \
-    wget https://github.com/bitwarden/clients/releases/download/cli-v${BW_CLI_VERSION}/bw-linux-${BW_CLI_VERSION}.zip && \
+    apt-get install -y wget unzip && \
+    wget --show-progress --progress bar https://github.com/bitwarden/clients/releases/download/cli-v${BW_CLI_VERSION}/bw-linux-${BW_CLI_VERSION}.zip && \
     unzip bw-linux-${BW_CLI_VERSION}.zip && \
     chmod +x bw && \
     mv bw /usr/local/bin/bw && \
-    rm -rfv *.zip
+    rm -rfv *.zip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 
@@ -26,9 +29,5 @@ RUN useradd -ms /bin/bash $USER && \
 # Swap to user account
 USER $USER
 WORKDIR /home/$USER/
-
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/*
 
 CMD ["/bin/bash", "/usr/bin/entrypoint.sh"]
