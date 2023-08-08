@@ -1,6 +1,6 @@
 apiVersion: v2
 name: bitwarden-eso-provider
-description: A Helm chart for Kubernetes
+description: Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
 # A chart can be either an 'application' or a 'library' chart.
 #
