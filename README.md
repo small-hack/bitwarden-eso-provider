@@ -18,7 +18,8 @@ helm install my-release bitwarden-eso-provider/bitwarden-eso-provider \
 
 If you don't want to deploy any [`ClusterSecretStores`](https://external-secrets.io/latest/introduction/overview/#clustersecretstore), use the following arg to helm:
 ```bash
-helm install my-release bitwarden-eso-provider/bitwarden-eso-provider --set bitwarden_eso_provider.create_cluster_secret_store=false
+helm install my-release bitwarden-eso-provider/bitwarden-eso-provider \
+  --set bitwarden_eso_provider.create_cluster_secret_store=false
 ```
 
 or set it via the values:
