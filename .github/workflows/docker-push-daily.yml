@@ -3,15 +3,18 @@ name: nightly and on.push docker builds
 on:
   # to trigger manually if we really need it
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "the name of the tag for the docker image"
+        type: "string"
+        required: true
 
+  # to trigger 
   push:
-    branches:
-      - 'main'
+    tags-ignore:
+      - "bitwarden-eso-provider-*"
     paths:
       - docker/**
-      - "!docker/README.md"
-    tags:
-      - "v*.*.*"
 
   schedule:
     # * is a special character in YAML so you have to quote this string
@@ -37,15 +40,47 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build/push - prereqs only
+      - name: Docker Build and Push
+        if: ${{ $GITHUB_EVENT_NAME == "workflow_dispatch" }}
         uses: docker/build-push-action@v4
         with:
           push: true
-          # build from docker/ directory
+          # build from the ./docker directory in this repo
           context: docker
           platforms: |
             linux/amd64
             linux/arm64
           tags: |
-            jessebot/bweso:latest
-            ${{ startsWith(github.ref, 'refs/tags') || format('{0}:{1}', jessebot/bweso, github.ref_name) || '' }}
+            jessebot/bweso:${{ inputs.tag_name }}
+
+      # push with ref_name if 
+      - name: Docker Build and Push
+        if: ${{ $GITHUB_EVENT_NAME != "workflow_dispatch" && $GITHUB_EVENT_NAME != "schedule" }}
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          # build from the ./docker directory in this repo
+          context: docker
+          platforms: |
+            linux/amd64
+            linux/arm64
+          tags: |
+            jessebot/bweso:${{ github.ref_name }}
+
+      - name: Get most recent tag
+        if: ${{ $GITHUB_EVENT_NAME == "schedule" }}
+        run: echo "last_tag=$(git describe --tags --abbrev=0) >> $GITHUB_ENV
+
+      - name: Docker Build and Push
+        if: ${{ $GITHUB_EVENT_NAME == "schedule" }}
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          # build from the ./docker directory in this repo
+          context: docker
+          platforms: |
+            linux/amd64
+            linux/arm64
+          tags: |
+            jessebot/bweso:nightly
+            jessebot/bweso:${{ env.last_tag }}
