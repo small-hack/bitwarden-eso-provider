@@ -15,7 +15,7 @@ helm install my-release bitwarden-eso-provider/bitwarden-eso-provider \
 ```
 
 > [!Note]
-> [kind](https://kind.sigs.k8s.io/) cant pull the container for some reason so we are using a pre-pull and side-load workaround in our CI steps. Based on this thread: https://stackoverflow.com/questions/63657414/kind-kubernetes-cluster-failed-to-pull-docker-images
+> [kind](https://kind.sigs.k8s.io/) cant pull the container for some reason so we are using a pre-pull and side-load workaround in our CI steps. Ref: [thread](https://stackoverflow.com/questions/63657414/kind-kubernetes-cluster-failed-to-pull-docker-images).
 
 ### Disable ClusterSecretStore Deployment
 
