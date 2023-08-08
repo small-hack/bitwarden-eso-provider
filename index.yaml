@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   bitwarden-eso-provider:
   - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2023-08-08T15:50:53.374234417Z"
+    description: A Helm chart for Kubernetes
+    digest: c8ca5556be5b186e5beecbf3d8ae475c6b262b758116526151e8e761bcc8bb4e
+    maintainers:
+    - email: emax@cloudydev.net
+      name: cloudymax
+      url: https://github.com/cloudymax/
+    - email: jessebot@linux.com
+      name: jessebot
+      url: https://github.com/jessebot/
+    name: bitwarden-eso-provider
+    type: application
+    urls:
+    - https://github.com/jessebot/bitwarden-eso-provider/releases/download/bitwarden-eso-provider-0.2.1/bitwarden-eso-provider-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     appVersion: v0.0.1
     created: "2023-08-08T13:10:42.078834086Z"
     description: A Helm chart for Kubernetes
@@ -35,4 +52,4 @@ entries:
     urls:
     - https://github.com/jessebot/bitwarden-eso-provider/releases/download/bitwarden-eso-provider-0.1.0/bitwarden-eso-provider-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-08T13:10:42.078841787Z"
+generated: "2023-08-08T15:50:53.374357519Z"
