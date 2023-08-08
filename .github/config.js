@@ -9,6 +9,7 @@ module.exports = {
     extends: ['config:base'],
     allowPostUpgradeCommandTemplating: true,
     allowedPostUpgradeCommands: ['^.*'],
+    // this is to replace the appVersion in Chart.yaml with the latest docker tag from the from image in the comment
     regexManagers: [
         {
             fileMatch: ['(^|/)Chart\\.yaml$'],

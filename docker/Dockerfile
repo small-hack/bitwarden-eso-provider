@@ -1,5 +1,6 @@
 FROM debian:bookworm-slim
 
+# note to self: we need to have renovate bot update this somehow...
 ENV BW_CLI_VERSION=2023.7.0
 
 RUN apt update && \
