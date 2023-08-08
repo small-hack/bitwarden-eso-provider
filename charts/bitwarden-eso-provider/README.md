@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.0.1](https://img.shields.io/badge/AppVersion-v0.0.1-informational?style=flat-square)
+![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -32,7 +32,7 @@ A Helm chart for Kubernetes
 | bitwarden_eso_provider.create_cluster_secret_store | bool | `true` | if set to True, we'll create a cluster-wide accessible Cluster Secret Store see: https://external-secrets.io/latest/introduction/overview/#clustersecretstore |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` | Overrides the image pullPolicy. Hint: set to Always if using latest tag |
-| image.repository | string | `"deserializeme/bweso"` | Overrides the image repository |
+| image.repository | string | `"jessebot/bweso"` | Overrides the image repository |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
