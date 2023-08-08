@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
 
 Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
@@ -16,9 +16,9 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| autoscaling.enabled | bool | `false` |  |
-| autoscaling.maxReplicas | int | `100` |  |
-| autoscaling.minReplicas | int | `1` |  |
+| autoscaling.enabled | bool | `false` | enable pod autoscaling |
+| autoscaling.maxReplicas | int | `100` | max number of pods to spin up |
+| autoscaling.minReplicas | int | `1` | minimum number of pods to keep |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | bitwarden_eso_provider.auth.clientID | string | `""` | bitwarden client ID to use to grabs secrets in the pod, ignored if existingSecret is set |
 | bitwarden_eso_provider.auth.clientSecret | string | `""` | bitwarden client Secret to use to grabs secrets in the pod, ignored if existingSecret is set |
@@ -39,7 +39,7 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` | additional annotations to apply to the bitwarden ESO provider pod |
 | podSecurityContext | object | `{}` |  |
-| replicaCount | int | `1` |  |
+| replicaCount | int | `1` | replicas to deploy of this pod |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.port | int | `80` | port to broadcast for k8s service internally on the cluster |
