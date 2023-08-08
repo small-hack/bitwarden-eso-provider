@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
+![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
 
 Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
@@ -22,7 +22,7 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | bitwarden_eso_provider.auth.clientID | string | `""` | bitwarden client ID to use to grabs secrets in the pod, ignored if existingSecret is set |
 | bitwarden_eso_provider.auth.clientSecret | string | `""` | bitwarden client Secret to use to grabs secrets in the pod, ignored if existingSecret is set |
-| bitwarden_eso_provider.auth.existingSecret | string | `""` | use an existing secret for bitwarden credentials, ignores above credentials if this is set |
+| bitwarden_eso_provider.auth.existingSecret | string | `""` | use an existing kubernetes secret for bitwarden credentials, ignores above credentials if this is set |
 | bitwarden_eso_provider.auth.host | string | `"https://bitwarden.com"` | bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set |
 | bitwarden_eso_provider.auth.password | string | `""` | password for bitwarden |
 | bitwarden_eso_provider.auth.secretKeys.clientID | string | `"BW_CLIENTID"` | secret key for bitwarden client ID to use to grabs secrets in the pod |
@@ -38,7 +38,7 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | nameOverride | string | `""` | this overrides the name of the chart |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` | additional annotations to apply to the bitwarden ESO provider pod |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext | object | `{}` | https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ |
 | replicaCount | int | `1` | replicas to deploy of this pod |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |

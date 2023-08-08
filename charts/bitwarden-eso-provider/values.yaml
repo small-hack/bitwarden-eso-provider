@@ -31,8 +31,9 @@ bitwarden_eso_provider:
     clientID: ""
     # -- bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set
     host: "https://bitwarden.com"
-    # -- use an existing secret for bitwarden credentials, ignores above credentials if this is set
+    # -- use an existing kubernetes secret for bitwarden credentials, ignores above credentials if this is set
     existingSecret: ""
+    # keys within the kubernetes existing secret
     secretKeys:
       # -- secret key for bitwarden password key
       password: "BW_PASSWORD"
@@ -55,6 +56,7 @@ serviceAccount:
 # -- additional annotations to apply to the bitwarden ESO provider pod
 podAnnotations: {}
 
+# -- https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 podSecurityContext: {}
   # fsGroup: 2000
 
