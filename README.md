@@ -14,6 +14,9 @@ helm install my-release bitwarden-eso-provider/bitwarden-eso-provider \
   --set bitwarden_eso_provider.auth.clientSecret=my-bitwarden-clientSecret
 ```
 
+> [!Note]
+> Kind cant pull the container for some reason so we are using a pre-pull and side-load workaround in our CI steps. Based on this thread: https://stackoverflow.com/questions/63657414/kind-kubernetes-cluster-failed-to-pull-docker-images
+
 ### Disable ClusterSecretStore Deployment
 
 If you don't want to deploy any [`ClusterSecretStores`](https://external-secrets.io/latest/introduction/overview/#clustersecretstore), use the following arg to helm:
