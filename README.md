@@ -1,6 +1,6 @@
 # Bitwarden External Secrets Operator Provider
-We, mostly @cloudymax, followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create a simple helm chart to deploy the Bitwarden ESO provider without having to spend a bunch of time on it. This allows you to use the [`ExternalSecrets` Custom Resource](https://external-secrets.io/latest/introduction/overview/#externalsecret) with Bitwarden.
-This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden project. Report bugs here :)
+We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create a simple helm chart to deploy the Bitwarden ESO provider without having to spend a bunch of time on it. This allows you to use the [`ExternalSecrets` Custom Resource](https://external-secrets.io/latest/introduction/overview/#externalsecret) with Bitwarden.
+This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden project. Report bugs [here](https://github.com/jessebot/bitwarden-eso-provider/issues) :)
 
 ## Usage
 For helm, see the [README](./charts/bitwarden-eso-provider/README.md) for full details of the allowed values in `values.yaml`, but this is the gist:
