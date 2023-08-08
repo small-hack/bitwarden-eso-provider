@@ -1,4 +1,7 @@
 # Bitwarden External Secrets Operator Provider
+  <a href="https://github.com/jessebot/onboardme/releases">
+    <img src="https://img.shields.io/github/v/release/jessebot/onboardme?style=plastic&labelColor=484848&color=3CA324&logo=GitHub&logoColor=white">
+    </a> <br>
 We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create a simple helm chart to deploy the Bitwarden ESO provider without having to spend a bunch of time on it. This allows you to use the [`ExternalSecrets` Custom Resource](https://external-secrets.io/latest/introduction/overview/#externalsecret) with Bitwarden.
 This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden project. Report bugs [here](https://github.com/jessebot/bitwarden-eso-provider/issues) :)
 
@@ -91,3 +94,6 @@ spec:
         # This is the property of the bitwarden secret that we want
         property: <some-secret-property>
 ```
+
+## Status
+Actively maintained mostly by @jessebot and @cloudymax but we'd love to have your help if you'd like to make improvements. Feel free to submit a GitHub issue to _this_ repo (_not_ the BitWarden repos) if you need help. You're also welcome to submit PRs and we'd love to review them 💙
