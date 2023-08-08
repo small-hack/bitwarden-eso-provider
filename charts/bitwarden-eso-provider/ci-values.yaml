@@ -1,0 +1,98 @@
+# Default values for bitwarden-eso-provider.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# replicas to deploy of this pod
+replicaCount: 1
+
+image:
+  # -- Overrides the image repository
+  repository: deserializeme/bweso
+  # -- Overrides the image pullPolicy. Hint: set to Always if using latest tag
+  pullPolicy: IfNotPresent
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+bitwarden_eso_provider:
+  # -- if set to True, we'll create a cluster-wide accessible Cluster Secret Store
+  # see: https://external-secrets.io/latest/introduction/overview/#clustersecretstore
+  create_cluster_secret_store: true
+  auth:
+    # -- password for bitwarden
+    password: "beepboopbeep"
+    # -- bitwarden client Secret to use to grabs secrets in the pod, ignored if existingSecret is set
+    clientSecret: ""
+    # -- bitwarden client ID to use to grabs secrets in the pod, ignored if existingSecret is set
+    clientID: ""
+    # -- bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set
+    host: "http://localhost:8080"
+    # -- use an existing secret for bitwarden credentials, ignores above credentials if this is set
+    existingSecret: ""
+    secretKeys:
+      # -- secret key for bitwarden password key
+      password: "BW_PASSWORD"
+      # -- secret key for bitwarden client Secret to use to grabs secrets in the pod
+      clientSecret: "BW_CLIENTSECRET"
+      # -- secret key for bitwarden client ID to use to grabs secrets in the pod
+      clientID: "BW_CLIENTID"
+      # -- secret key for bitwarden hostname to use to grab secrets in the pod
+      host: "BW_HOST"
+
+serviceAccount:
+  # -- Specifies whether a service account should be created
+  create: true
+  # -- Annotations to add to the service account
+  annotations: {}
+  # -- The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# -- additional annotations to apply to the bitwarden ESO provider pod
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  # -- port on the container to target for the k8s service
+  targetPort: 8087
+  # -- port to broadcast for k8s service internally on the cluster
+  port: 80
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
