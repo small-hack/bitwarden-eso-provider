@@ -1,4 +1,4 @@
-# Bitwarden External Secrets Operator Provider <a href="https://github.com/jessebot/onboardme/releases"><img src="https://img.shields.io/github/v/release/jessebot/onboardme?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
+# Bitwarden External Secrets Operator Provider <a href="https://github.com/jessebot/bitwarden-eso-provider/releases"><img src="https://img.shields.io/github/v/release/jessebot/onboardme?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
 
 Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden®️.</sub>
 
