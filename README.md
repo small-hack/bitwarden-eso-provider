@@ -1,7 +1,7 @@
 # Bitwarden External Secrets Operator Provider Helm Chart
 <a href="https://github.com/jessebot/bitwarden-eso-provider/releases"><img src="https://img.shields.io/github/v/release/jessebot/bitwarden-eso-provider?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
 
-Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden®️.</sub>
+Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden®️ at this time.</sub>
 
 ## Usage
 For helm, see the [README](./charts/bitwarden-eso-provider/README.md) for full details of the allowed values in [`values.yaml`](./charts/bitwarden-eso-provider/values.yaml), but, provided you _already installed the Externeral secrets operator_, this is the gist:
