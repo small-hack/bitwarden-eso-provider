@@ -98,7 +98,7 @@ spec:
 ```
 
 ## Status
-Actively maintained mostly by @jessebot and @cloudymax but we'd love to have your help if you'd like to make improvements. Feel free to submit a GitHub issue to _this_ repo (_not_ the BitWarden repos) if you need help. You're also welcome to submit PRs and we'd love to review them 💙
+Actively maintained mostly by @jessebot and @cloudymax but we'd love to have your help if you'd like to make improvements. We mostly test on k3s. Feel free to submit a GitHub issue to _this_ repo (_not_ the BitWarden repos) if you need help. You're also welcome to submit PRs and we'd love to review them 💙
 
 ## Acknowledgements
 We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create this helm chart :)
