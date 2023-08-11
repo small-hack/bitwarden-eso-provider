@@ -5,8 +5,8 @@ module.exports = {
   platform: 'github',
   includeForks: true,
   dryRun: null,
-  repositories: ['jessebot/bitwarden-eso-provider', ':disableDependencyDashboard'],
-    extends: ['config:base'],
+  repositories: ['jessebot/bitwarden-eso-provider'],
+    extends: ['config:base', ':disableDependencyDashboard'],
     allowPostUpgradeCommandTemplating: true,
     allowedPostUpgradeCommands: ['^.*'],
     // this is to replace the appVersion in Chart.yaml with the latest docker tag from the from image in the comment
