@@ -32,7 +32,7 @@ bitwarden_eso_provider:
     # -- bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set
     host: "https://bitwarden.com"
     # -- use an existing secret for bitwarden credentials, ignores above credentials if this is set
-    existingSecret: ""
+    existingSecret: "bitwarden"
     secretKeys:
       # -- secret key for bitwarden password key
       password: "BW_PASSWORD"
@@ -71,7 +71,7 @@ service:
   # -- port on the container to target for the k8s service
   targetPort: 8087
   # -- port to broadcast for k8s service internally on the cluster
-  port: 80
+  port: 8087
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

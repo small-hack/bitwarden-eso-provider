@@ -4,6 +4,7 @@ kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
   name: external-secret-2-{{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
 spec:
   podSelector:
     matchLabels:

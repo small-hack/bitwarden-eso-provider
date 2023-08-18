@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "bitwarden-eso-provider.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "bitwarden-eso-provider.labels" . | nindent 4 }}
 spec:
@@ -63,18 +64,18 @@ spec:
               command:
                 - wget
                 - -q
-                - http://127.0.0.1:{{ .Values.service.targetPort }}/sync
+                - http://127.0.0.1:{{ .Values.service.port }}/sync
                 - --post-data=''
           readinessProbe:
             tcpSocket:
-              port: {{ .Values.service.targetPort }}
+              port: {{ .Values.service.port }}
             initialDelaySeconds: 20
             failureThreshold: 3
             timeoutSeconds: 1
             periodSeconds: 10
           startupProbe:
             tcpSocket:
-              port: {{ .Values.service.targetPort }}
+              port: {{ .Values.service.port }}
             initialDelaySeconds: 10
             failureThreshold: 30
             timeoutSeconds: 1
