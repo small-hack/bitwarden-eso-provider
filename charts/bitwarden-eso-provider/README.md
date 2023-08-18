@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
+![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
 
 Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
@@ -36,6 +36,8 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` | this overrides the name of the chart |
+| network_policy.enabled | bool | `true` | enable a network policy between bitwarden_eso_provider and external-secrets-operator |
+| network_policy.labels | object | `{"app.kubernetes.io/name":"external-secrets"}` | specify the labels you'd like to match against for the network policy |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` | additional annotations to apply to the bitwarden ESO provider pod |
 | podSecurityContext | object | `{}` |  |
