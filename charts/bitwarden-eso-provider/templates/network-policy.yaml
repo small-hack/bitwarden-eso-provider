@@ -1,3 +1,4 @@
+{{- if .Values.network_policy }}
 ---
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
@@ -12,4 +13,5 @@ spec:
     - from:
       - namespaceSelector:
           matchLabels:
-            kubernetes.io/metadata.name: external-secrets
+          {{ toYaml .Values.network_policy.labels | indent 2 }}
+{{- end }}
