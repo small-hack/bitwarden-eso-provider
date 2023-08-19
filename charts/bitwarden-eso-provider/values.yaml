@@ -71,7 +71,7 @@ service:
   # -- port on the container to target for the k8s service
   targetPort: 8087
   # -- port to broadcast for k8s service internally on the cluster
-  port: 80
+  port: 8087
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
