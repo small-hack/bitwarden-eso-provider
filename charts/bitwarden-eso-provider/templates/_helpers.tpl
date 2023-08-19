@@ -93,5 +93,5 @@ Create the url string that will be used to query bitwarden
 - cluster-secret-store fields jsonpath
 */}}
 {{- define "bitwarden-eso-provider.clusterSecretStore.fieldsJsonPath" -}}
-{{- printf "$.data.data[0].fields[?(@.name=='{{ .remoteRef.property }}')].value" | quote }}
+{{- printf "$.data.data[0].fields[?(@.name==\"{{ .remoteRef.property }}\")].value" | quote }}
 {{- end }}
