@@ -1,7 +1,7 @@
 # Bitwarden External Secrets Operator Provider Helm Chart
-<a href="https://github.com/jessebot/bitwarden-eso-provider/releases"><img src="https://img.shields.io/github/v/release/jessebot/bitwarden-eso-provider?style=plastic&labelColor=blue&color=green&logo=GitHub&logoColor=white"></a>
+<a href="https://github.com/jessebot/bitwarden-eso-provider/releases"><img src="https://img.shields.io/github/v/release/jessebot/bitwarden-eso-provider?style=plastic&labelColor=blue&color=036440&logo=GitHub&logoColor=white"></a>
 
-Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither affiliated with the External Secrets Operator, nor the official Bitwarden®️ at this time.</sub>
+Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither directly affiliated with the External Secrets Operator, nor the official Bitwarden®️ at this time.</sub>
 
 ## Usage
 For helm, see the [README](./charts/bitwarden-eso-provider/README.md) for full details of the allowed values in [`values.yaml`](./charts/bitwarden-eso-provider/values.yaml), but, provided you _already installed the Externeral secrets operator_, this is the gist:
@@ -58,7 +58,7 @@ Or setting it via the `helm` cli:
 helm install my-release bitwarden-eso-provider/bitwarden-eso-provider --set bitwarden_eso_provider.auth.existingSecret="my-cool-secret"
 ```
 
-# Example Secret
+# Example ExternalSecret
 By default we will create two `ClusterSecretStores` for you that can then be accessed when you create a secret like [this](./examples/example-secret.yaml), but also printed below here:
 
 ```yaml
@@ -66,39 +66,38 @@ By default we will create two `ClusterSecretStores` for you that can then be acc
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  # this is the name of the ExternalSecret object
-  name: cool-secret-4-dogs
+  # name of the ExternalSecret itself
+  name: beatiful-external-secret
   namespace: coolapp4dogs
 spec:
   target:
-    # This is the name of the secret in bitwarden
-    name: cool-secret
+    # name of the secret to create in Kubernetes
+    name: beautiful-k8s-secret
     deletionPolicy: Delete
     template:
       type: Opaque
       data:
-        # The kubernetes secret name
+        # key in the Kubernetes secret to create
         password: |-
           {{ .password }}
   data:
-    # the value to pass to the kubernetes secret.
+    # value to pass to the Kubernetes secret, go-templated as {{ .password }} above
     - secretKey: password
       sourceRef:
         storeRef:
-          # Use the `bitwarden-login` store to get `username` and
-          # `password` values from a bitwarden secret that does not
-          # contain custom fields, Otherwise use `bitwarden-fields'
+          # Use the bitwarden-login store to get password values from a Bitwarden item
+          # does *not* contain custom fields. Use bitwarden-fields for Bitwarden items with custom fields
           name: bitwarden-login
           kind: ClusterSecretStore
       remoteRef:
-        # This is the `name` of your bitwarden secret. 
-        key: <your-secret-name>
-        # This is the property of the bitwarden secret that we want
-        property: <some-secret-property>
+        # This is the `name` of your Bitwarden item (not the id)
+        key: my-beautiful-login-item-in-bitwarden
+        # This is the property of the Bitwarden item that we want e.g. password
+        property: password
 ```
 
 ## Status
-Actively maintained mostly by @jessebot and @cloudymax but we'd love to have your help if you'd like to make improvements. We mostly test on k3s. Feel free to submit a GitHub issue to _this_ repo (_not_ the BitWarden repos) if you need help. You're also welcome to submit PRs and we'd love to review them 💙
+Actively maintained mostly by @jessebot and @cloudymax, but we'd love to have your help if you'd like to make improvements (bugs or feature fixes). We mostly test on k3s. Feel free to submit a GitHub issue to _this_ repo (_not_ the Bitwarden repos) if you need help. You're also welcome to submit PRs to this repo, and we'd love to review them 💙
 
 ## Acknowledgements
 We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create this helm chart :)
