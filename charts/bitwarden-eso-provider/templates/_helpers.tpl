@@ -75,5 +75,5 @@ Create the url string that will be used to query bitwarden
 - cluster-secret-store items jsonpath
 */}}
 {{- define "bitwarden-eso-provider.clusterSecretStore.loginJsonPath" -}}
-{{- printf "$.data.data.[0].{{ remoteRef.property }}" | quote }}
+{{- printf "$.data.data[0].login.{{ remoteRef.property }}" | quote }}
 {{- end }}
