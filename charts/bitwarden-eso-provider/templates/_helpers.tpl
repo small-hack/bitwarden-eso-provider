@@ -60,3 +60,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the url string that will be used to query Bitwarden for secrets
+*/}}
+{{- define "bitwarden-eso-provider.clusterSecretStore.loginUrl" -}}
+{{- printf "http://%s.%s.svc.cluster.local:%s/list/object/items?search={{ remoteRef.key }}" .Release.Name .Release.Namespace (.Values.service.port | toString) }}
+{{- end }}
