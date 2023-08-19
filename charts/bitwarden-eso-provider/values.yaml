@@ -32,7 +32,7 @@ bitwarden_eso_provider:
     # -- bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set
     host: "https://bitwarden.com"
     # -- use an existing secret for bitwarden credentials, ignores above credentials if this is set
-    existingSecret: "bitwarden"
+    existingSecret: ""
     secretKeys:
       # -- secret key for bitwarden password key
       password: "BW_PASSWORD"
