@@ -24,4 +24,4 @@ spec:
       configMap:
         name: test-connection
         defaultMode: 0777
-  restartPolicy: Always
+  restartPolicy: OnFailure
