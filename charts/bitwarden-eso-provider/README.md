@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
 
 Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
@@ -44,7 +44,7 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | replicaCount | int | `1` | replicas to deploy of this pod |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.port | int | `80` | port to broadcast for k8s service internally on the cluster |
+| service.port | int | `8087` | port to broadcast for k8s service internally on the cluster |
 | service.targetPort | int | `8087` | port on the container to target for the k8s service |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
