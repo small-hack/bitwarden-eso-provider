@@ -107,3 +107,23 @@ network_policy:
   # -- specify the labels you'd like to match against for the network policy
   labels:
     app.kubernetes.io/name: external-secrets
+
+# -- The livenessProbe calls the `bw sync` command.
+livenessProbe:
+  initialDelaySeconds: 20
+  failureThreshold: 30
+  timeoutSeconds: 1
+  # -- The `periodSeconds` value controls how long to wait until next `bw sync`
+  periodSeconds: 10
+
+readinessProbe:
+  initialDelaySeconds: 20
+  failureThreshold: 30
+  timeoutSeconds: 1
+  periodSeconds: 10
+
+startupProbe:
+  initialDelaySeconds: 20
+  failureThreshold: 30
+  timeoutSeconds: 1
+  periodSeconds: 10
