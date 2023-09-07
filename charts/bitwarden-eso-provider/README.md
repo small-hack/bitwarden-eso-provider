@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
+![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
 
 Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
@@ -35,12 +35,18 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | image.repository | string | `"jessebot/bweso"` | Overrides the image repository |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
+| livenessProbe | object | `{"failureThreshold":30,"initialDelaySeconds":20,"periodSeconds":10,"timeoutSeconds":1}` | The livenessProbe calls the `bw sync` command. |
+| livenessProbe.periodSeconds | int | `10` | The `periodSeconds` value controls how long to wait until next `bw sync` |
 | nameOverride | string | `""` | this overrides the name of the chart |
 | network_policy.enabled | bool | `true` | enable a network policy between bitwarden_eso_provider and external-secrets-operator |
 | network_policy.labels | object | `{"app.kubernetes.io/name":"external-secrets"}` | specify the labels you'd like to match against for the network policy |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` | additional annotations to apply to the bitwarden ESO provider pod |
 | podSecurityContext | object | `{}` |  |
+| readinessProbe.failureThreshold | int | `30` |  |
+| readinessProbe.initialDelaySeconds | int | `20` |  |
+| readinessProbe.periodSeconds | int | `10` |  |
+| readinessProbe.timeoutSeconds | int | `1` |  |
 | replicaCount | int | `1` | replicas to deploy of this pod |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
@@ -50,6 +56,10 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
+| startupProbe.failureThreshold | int | `30` |  |
+| startupProbe.initialDelaySeconds | int | `20` |  |
+| startupProbe.periodSeconds | int | `10` |  |
+| startupProbe.timeoutSeconds | int | `1` |  |
 | tolerations | list | `[]` |  |
 
 ----------------------------------------------

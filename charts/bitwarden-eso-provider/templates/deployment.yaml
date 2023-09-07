@@ -66,24 +66,24 @@ spec:
                 - -q
                 - http://127.0.0.1:{{ .Values.service.port }}/sync
                 - --post-data=''
-            initialDelaySeconds: 20
-            failureThreshold: 30
-            timeoutSeconds: 1
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
           readinessProbe:
             tcpSocket:
               port: {{ .Values.service.port }}
-            initialDelaySeconds: 20
-            failureThreshold: 3
-            timeoutSeconds: 1
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           startupProbe:
             tcpSocket:
               port: {{ .Values.service.port }}
-            initialDelaySeconds: 10
-            failureThreshold: 30
-            timeoutSeconds: 1
-            periodSeconds: 5
+            initialDelaySeconds: {{ .Values.startupProbe.initialDelaySeconds }}
+            failureThreshold: {{ .Values.startupProbe.failureThreshold }}
+            timeoutSeconds: {{ .Values.startupProbe.timeoutSeconds }}
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
