@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-# note to self: we need to have renovate bot update this somehow
+# renovate: datasource=github-releases depName=bitwarden/clients versioning=loose
 ENV BW_CLI_VERSION=2023.10.0
 
 RUN apt update && \
