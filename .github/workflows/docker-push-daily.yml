@@ -42,7 +42,7 @@ jobs:
 
       - name: Docker Build and Push
         if: ${{ github.event == 'workflow_dispatch' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: true
           # build from the ./docker directory in this repo
@@ -55,7 +55,7 @@ jobs:
       # push with ref_name if 
       - name: Docker Build and Push
         if: ${{ github.event != 'workflow_dispatch' && github.event != 'schedule' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: true
           # build from the ./docker directory in this repo
@@ -71,7 +71,7 @@ jobs:
 
       - name: Docker Build and Push
         if: ${{ github.event == 'schedule' }}
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: true
           # build from the ./docker directory in this repo
