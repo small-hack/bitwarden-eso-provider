@@ -97,8 +97,122 @@ spec:
         property: password
 ```
 
+## Testing 
+
+Searching for items has to be done using JSONpath, you will need to install a utility for that, we use [bashtools/JSONPath.sh](https://github.com/bashtools/JSONPath.sh).
+
+To query the endpoint you will need to deploy a maintenance container into the `external-secrets` namespace.
+
+```yaml
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: maintenance
+  namespace: external-secrets
+  annotations:
+    # set to "true" to include in future backups
+    k8up.io/backup: "false"
+  # Optional:
+  #labels:
+  #  app: multi-file-writer
+spec:
+  # Optional:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      # Must be sufficient to hold your data
+      storage: 16Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: maintenance
+  namespace: external-secrets
+  annotations:
+    # set to "true" to include in future backups
+    k8up.io/backup: "false"
+  # Optional:
+  #labels:
+  #  app: multi-file-writer
+spec:
+  # Optional:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      # Must be sufficient to hold your data
+      storage: 16Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maintenance
+  namespace: external-secrets
+spec:
+  selector:
+    matchLabels:
+      app: onboardme
+  template:
+    metadata:
+      labels:
+        app: onboardme
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: onboardme
+          image: jessebot/onboardme:debian12
+          command:
+            - /bin/sleep
+            - 3650d
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: "http"
+            - containerPort: 443
+              name: "https"
+            - containerPort: 22
+              name: "ssh"
+            - containerPort: 5900
+              name: "vnc"
+          volumeMounts:
+          - mountPath: /tmp
+            name: maintenance
+      volumes:
+      - name: maintenance
+        persistentVolumeClaim:
+          claimName: maintenance
+```
+
+- Use `kubectl exec -n external-secrets -it <pod name> -- bash` to attach to the container.
+
+- Download JSONPath.sh
+
+  ```bash
+  sudo apt-get update && sudo apt-get install -y gawk
+  curl -O https://raw.githubusercontent.com/mclarkson/JSONPath.sh/master/JSONPath.sh
+  chmod +x JSONPath.sh
+  ```
+
+- Query the endpoint
+
+  ```bash
+  curl bitwarden-eso-provider.external-secrets.svc.cluster.local:8087/list/object/items
+  ```
+
+- Test a JSONPath filter
+
+  ```bash
+  curl bitwarden-eso-provider.external-secrets.svc.cluster.local:8087/list/object/items?search=zitadel \
+  | JSONPath.sh '$.data'
+
+  ```
+
 ## Status
-Actively maintained mostly by @jessebot and @cloudymax, but we'd love to have your help if you'd like to make improvements (bugs or feature fixes). We mostly test on k3s. Feel free to submit a GitHub issue to _this_ repo (_not_ the Bitwarden repos) if you need help. You're also welcome to submit PRs to this repo, and we'd love to review them 💙
+Actively maintained mostly by @jessebot and @cloudymax, but we'd love to have your help if you'd like to make improvements (bugs or feature fixes). We mostly test on k3s. Feel free to submit a GitHub issue to _this_ repo (_not_ the Bitwarden repos) if you need help. You're also welcome to submit PRs to this repo, and we'd love to review them 💙 Star the repo if you find it helpful <3
 
 ## Acknowledgements
 We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create this helm chart :)
