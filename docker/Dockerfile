@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
 # note to self: we need to have renovate bot update this somehow
-ENV BW_CLI_VERSION=2023.7.0
+ENV BW_CLI_VERSION=2023.10.0
 
 RUN apt update && \
     apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
