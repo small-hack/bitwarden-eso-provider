@@ -66,7 +66,7 @@ Create the url string that will be used to query Bitwarden:
 - cluster-secret-store logins url
 */}}
 {{- define "bitwarden-eso-provider.clusterSecretStore.loginUrl" -}}
-{{- printf "http://%s.%s.svc.cluster.local:%s/list/object/items?search={{ .remoteRef.key }}" .Release.Name .Release.Namespace (.Values.service.port | toString) | quote }}
+{{- printf "http://%s.%s.svc.cluster.local.:%s/list/object/items?search={{ .remoteRef.key }}" .Release.Name .Release.Namespace (.Values.service.port | toString) | quote }}
 {{- end }}
 
 
