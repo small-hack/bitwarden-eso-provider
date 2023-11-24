@@ -20,6 +20,19 @@ helm install my-release bitwarden-eso-provider/bitwarden-eso-provider \
 > [!Note]
 > [kind](https://kind.sigs.k8s.io/) cant pull the container for some reason so we are using a pre-pull and side-load workaround in our CI steps. Ref: [thread](https://stackoverflow.com/questions/63657414/kind-kubernetes-cluster-failed-to-pull-docker-images).
 
+## Why does this exist?
+
+We really didnt want to make this, but after lots of searching and experimentation we have found that Bitwarden stands out from its competitors for the following reasons:
+
+1. A Generous free tier
+2. Open-Source with a permissive license
+3. Self-Hostable via VaultWarden
+4. Compatible with the External Secrets Operator
+5. Also a password manager with native desktop and mobile apps on Windows, Mac, Linux, Andorid, and IOS
+
+![secrets-suck drawio](https://github.com/small-hack/bitwarden-eso-provider/assets/84841307/88c7f483-ca08-48ec-80bc-8892f46b1c80)
+
+
 ### Disable ClusterSecretStore Deployment
 
 If you don't want to deploy any [`ClusterSecretStores`](https://external-secrets.io/latest/introduction/overview/#clustersecretstore), use the following arg to helm:
