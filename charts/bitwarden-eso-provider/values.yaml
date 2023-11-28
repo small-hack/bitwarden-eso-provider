@@ -42,6 +42,8 @@ bitwarden_eso_provider:
       clientID: "BW_CLIENTID"
       # -- secret key for bitwarden hostname to use to grab secrets in the pod
       host: "BW_HOST"
+      # -- secret key for bitwarden app ID to use to identify the pod to bitwarden
+      appID: "BW_APPID"
 
 serviceAccount:
   # -- Specifies whether a service account should be created
