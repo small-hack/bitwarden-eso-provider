@@ -233,4 +233,28 @@ Actively maintained mostly by @jessebot and @cloudymax, but we'd love to have yo
 We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/) over at the ESO docs to create this helm chart :)
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/jessebot">
+            <img src="https://avatars.githubusercontent.com/u/2389292?v=4" width="100;" alt="jessebot"/>
+            <br />
+            <sub><b>JesseBot</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/cloudymax">
+            <img src="https://avatars.githubusercontent.com/u/84841307?v=4" width="100;" alt="cloudymax"/>
+            <br />
+            <sub><b>Max!</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jokajak">
+            <img src="https://avatars.githubusercontent.com/u/460913?v=4" width="100;" alt="jokajak"/>
+            <br />
+            <sub><b>Josh</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
