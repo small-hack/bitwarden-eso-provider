@@ -20,6 +20,7 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | autoscaling.maxReplicas | int | `100` | max number of pods to spin up |
 | autoscaling.minReplicas | int | `1` | minimum number of pods to keep |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| bitwarden_eso_provider.auth.appID | string | `""` | optional bitwarden app ID to identify your pod to the Bitwarden server so that you don't receieve infinite email notifications every login |
 | bitwarden_eso_provider.auth.clientID | string | `""` | bitwarden client ID to use to grabs secrets in the pod, ignored if existingSecret is set |
 | bitwarden_eso_provider.auth.clientSecret | string | `""` | bitwarden client Secret to use to grabs secrets in the pod, ignored if existingSecret is set |
 | bitwarden_eso_provider.auth.existingSecret | string | `""` | use an existing secret for bitwarden credentials, ignores above credentials if this is set |
