@@ -45,8 +45,8 @@ jobs:
       
       - name: Pull and side-load docker container
         run: |
-          docker pull --platform=linux/amd64 docker.io/jessebot/bweso:v0.3.0 && \
-          kind load docker-image docker.io/jessebot/bweso:v0.3.0 --name kind-chart-testing
+          docker pull --platform=linux/amd64 docker.io/jessebot/bweso:v0.4.0 && \
+          kind load docker-image docker.io/jessebot/bweso:v0.4.0 --name chart-testing
         shell: bash
 
       - name: Run chart-testing (install)
@@ -57,4 +57,4 @@ jobs:
             --helm-extra-set-args="--set=bitwarden_eso_provider.create_cluster_secret_store=false \
             --set=bitwarden_eso_provider.auth.password=${{ secrets.BOT_PASSWORD }} \
             --set=bitwarden_eso_provider.auth.clientID=${{ secrets.BOT_CLIENT_ID }} \
-            --set=bitwarden_eso_provider.auth.clientSecret=${{ BOT_CLIENT_SECRET }}"
+            --set=bitwarden_eso_provider.auth.clientSecret=${{ secrets.BOT_CLIENT_SECRET }}"
