@@ -1,6 +1,6 @@
 # bitwarden-eso-provider
 
-![Version: 0.5.2](https://img.shields.io/badge/Version-0.5.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.4.0](https://img.shields.io/badge/AppVersion-v0.4.0-informational?style=flat-square)
+![Version: 0.5.3](https://img.shields.io/badge/Version-0.5.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.4.0](https://img.shields.io/badge/AppVersion-v0.4.0-informational?style=flat-square)
 
 Helm chart to use Bitwarden as a Provider for External Secrets Operator
 
@@ -25,6 +25,7 @@ Helm chart to use Bitwarden as a Provider for External Secrets Operator
 | bitwarden_eso_provider.auth.existingSecret | string | `""` | use an existing secret for bitwarden credentials, ignores above credentials if this is set |
 | bitwarden_eso_provider.auth.host | string | `"https://bitwarden.com"` | bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set |
 | bitwarden_eso_provider.auth.password | string | `""` | password for bitwarden |
+| bitwarden_eso_provider.auth.secretKeys.appID | string | `"BW_APPID"` | secret key for bitwarden app ID to use to identify the pod to bitwarden |
 | bitwarden_eso_provider.auth.secretKeys.clientID | string | `"BW_CLIENTID"` | secret key for bitwarden client ID to use to grabs secrets in the pod |
 | bitwarden_eso_provider.auth.secretKeys.clientSecret | string | `"BW_CLIENTSECRET"` | secret key for bitwarden client Secret to use to grabs secrets in the pod |
 | bitwarden_eso_provider.auth.secretKeys.host | string | `"BW_HOST"` | secret key for bitwarden hostname to use to grab secrets in the pod |
