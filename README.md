@@ -11,10 +11,12 @@ For helm, see the [README](./charts/bitwarden-eso-provider/README.md) for full d
 helm repo add bitwarden-eso-provider https://small-hack.github.io/bitwarden-eso-provider
 
 # install the bitwarden provider with credentials via the CLI
+# the appID is a random string you set as a unique identifier to bitwarden to avoid too many logged-in notification emails
 helm install my-release bitwarden-eso-provider/bitwarden-eso-provider \
   --set bitwarden_eso_provider.auth.password=my-secure-bitwarden-password \
   --set bitwarden_eso_provider.auth.clientID=my-bitwarden-clientID \
   --set bitwarden_eso_provider.auth.clientSecret=my-bitwarden-clientSecret
+  --set bitwarden_eso_provider.auth.appID=my-custom-string \
 ```
 
 > [!Note]
@@ -64,6 +66,8 @@ bitwarden_eso_provider:
       clientSecret: "BW_CLIENTSECRET"
       # -- secret key for Bitwarden client ID to use to grabs secrets in the pod
       clientID: "BW_CLIENTID"
+      # -- bitwarden app ID to identify your pod to the Bitwarden server so that you don't receieve infinite email notifications every login
+      appID: "BW_APPID"
       # -- secret key for Bitwarden hostname to use to grab secrets in the pod
       host: "BW_HOST"
 ```
