@@ -55,6 +55,11 @@ spec:
                 secretKeyRef:
                   name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
                   key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.password }}
+            - name: BW_APPID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.bitwarden_eso_provider.auth.existingSecret | default .Release.Name }}"
+                  key: {{ .Values.bitwarden_eso_provider.auth.secretKeys.appID }}
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}

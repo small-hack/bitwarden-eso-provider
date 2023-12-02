@@ -29,6 +29,8 @@ bitwarden_eso_provider:
     clientSecret: ""
     # -- bitwarden client ID to use to grabs secrets in the pod, ignored if existingSecret is set
     clientID: ""
+    # -- optional bitwarden app ID to identify your pod to the Bitwarden server so that you don't receieve infinite email notifications every login
+    appID: ""
     # -- bitwarden hostname to use to grab secrets in the pod, ignored if existingSecret is set
     host: "https://bitwarden.com"
     # -- use an existing secret for bitwarden credentials, ignores above credentials if this is set
@@ -42,6 +44,8 @@ bitwarden_eso_provider:
       clientID: "BW_CLIENTID"
       # -- secret key for bitwarden hostname to use to grab secrets in the pod
       host: "BW_HOST"
+      # -- secret key for bitwarden app ID to use to identify the pod to bitwarden
+      appID: "BW_APPID"
 
 serviceAccount:
   # -- Specifies whether a service account should be created
