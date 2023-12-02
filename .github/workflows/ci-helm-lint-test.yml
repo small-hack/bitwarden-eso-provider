@@ -45,7 +45,7 @@ jobs:
       
       - name: Pull and side-load docker container
         run: |
-          docker pull --platform=linux/amd64 docker.io/jessebot/bweso:v0.3.0 && \
+          docker pull --platform=linux/amd64 docker.io/jessebot/bweso:v0.4.0 && \
           kind load docker-image docker.io/jessebot/bweso:v0.4.0 --name chart-testing
         shell: bash
 
