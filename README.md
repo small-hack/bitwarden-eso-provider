@@ -238,17 +238,17 @@ We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/cloudymax">
-            <img src="https://avatars.githubusercontent.com/u/84841307?v=4" width="100;" alt="cloudymax"/>
-            <br />
-            <sub><b>Max!</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/jessebot">
             <img src="https://avatars.githubusercontent.com/u/2389292?v=4" width="100;" alt="jessebot"/>
             <br />
             <sub><b>Jessebot</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/cloudymax">
+            <img src="https://avatars.githubusercontent.com/u/84841307?v=4" width="100;" alt="cloudymax"/>
+            <br />
+            <sub><b>Max!</b></sub>
         </a>
     </td>
     <td align="center">
@@ -257,7 +257,6 @@ We followed the [example](https://external-secrets.io/v0.9.2/examples/bitwarden/
             <br />
             <sub><b>Jokajak</b></sub>
         </a>
-    </td> 
-</tr>
+    </td></tr>
 </table>
 <!-- readme: contributors -end -->
