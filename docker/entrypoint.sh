@@ -1,6 +1,12 @@
 #!/bin/bash
 
 set -e
+
+if [ -n "$BW_APPID" ]; then
+	mkdir -p ~/.config/Bitwarden\ CLI/
+	echo "{\"appId\":\"$BW_APPID\"}" >~/.config/Bitwarden\ CLI/data.json
+fi
+
 echo "starting entrypoint script"
 
 echo "configuring the server host: $BW_HOST"
