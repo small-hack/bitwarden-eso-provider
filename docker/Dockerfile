@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
 # renovate: datasource=github-releases depName=bitwarden/clients versioning=loose
-ENV BW_CLI_VERSION=2023.10.0
+ENV BW_CLI_VERSION=2024.2.0
 
 RUN apt update && \
     apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
