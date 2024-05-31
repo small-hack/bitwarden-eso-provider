@@ -3,15 +3,6 @@
   "extends": [
         "config:recommended", ":disableDependencyDashboard"
   ],
-  "regexManagers": [
-        {
-            "fileMatch": ["(^|/)Chart\\.yaml$"],
-            "matchStrings": [
-                "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
-            ],
-            "datasourceTemplate": "docker"
-        }
-    ],
   "customManagers": [
         {
             "customType": "regex",
@@ -20,6 +11,15 @@
             "matchStrings": ["ENV BW_CLI_VERSION=(?<currentValue>.*?)\\n"],
             "depNameTemplate": "@bitwarden/cli",
             "datasourceTemplate": "npm"
+        },
+        {
+            "customType": "regex",
+            "description": "Update helm chart appVersion",
+            "fileMatch": ["(^|/)Chart\\.yaml$"],
+            "matchStrings": [
+                "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
+            ],
+            "datasourceTemplate": "docker"
         }
     ],
     "packageRules": [
