@@ -11,5 +11,36 @@
             ],
             "datasourceTemplate": "docker"
         },
+        {
+            "fileMatch": ["docker/Dockerfile"],
+            "matchStrings": [
+                "#\\s?renovate: depName=(?<depName>.*?)\\s?BW_CLI_VERSION=\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)",
+            ],
+            "datasourceTemplate": "github-releases"
+        }
+    ],
+    "packageRules": [
+      {
+        "description": "Bump helm chart versions by a patch when updating values files. Digests, pins, rollbacks, replacements and pinDigest updates are deliberately ignored since in our use case, these need a manual decision about the version bump for the chart. This can be removed when https://github.com/renovatebot/renovate/issues/8231 is implemented and enabled.",
+        "matchManagers": ["helm-values", "regex"],
+        "postUpgradeTasks": {
+          "commands": [
+            "scripts/bump-chart-version.sh '{{{parentDir}}}' '{{{updateType}}}'"
+          ],
+          "fileFilters": ["**/Chart.yaml"],
+          "executionMode": "branch"
+        }
+      },
+      {
+        "description": "Bump bitwarden release version.",
+        "matchManagers": ["regex"],
+        "postUpgradeTasks": {
+          "commands": [
+            "scripts/bump-github-release.sh '{{{updateType}}}'"
+          ],
+          "fileFilters": ["docker/Dockerfile"],
+          "executionMode": "branch"
+        }
+      }
     ]
 }
