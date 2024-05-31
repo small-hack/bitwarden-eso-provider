@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-ENV BW_CLI_VERSION=2024.2.0
+ENV BW_CLI_VERSION=2024.4.1
 
 RUN apt update && \
     apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
