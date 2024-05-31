@@ -9,7 +9,7 @@ on:
         type: "string"
         required: true
 
-  # to trigger 
+  # to trigger
   push:
     tags-ignore:
       - "bitwarden-eso-provider-*"
@@ -52,7 +52,7 @@ jobs:
           tags: |
             jessebot/bweso:${{ inputs.tag_name }}
 
-      # push with ref_name if 
+      # push with ref_name if
       - name: Docker Build and Push
         if: ${{ github.event != 'workflow_dispatch' && github.event != 'schedule' }}
         uses: docker/build-push-action@v5
