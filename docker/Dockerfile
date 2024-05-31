@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-# renovate: datasource=github-releases depName=bitwarden/clients versioning=loose
+# renovate: depName=bitwarden/clients
 ENV BW_CLI_VERSION=2024.2.0
 
 RUN apt update && \
