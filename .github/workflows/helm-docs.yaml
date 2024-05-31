@@ -1,0 +1,28 @@
+name: Generate helm docs
+
+on:
+  pull_request:
+    paths:
+      - 'charts/home-assistant/Chart.yaml'
+      - 'charts/home-assistant/values.yaml'
+
+permissions:
+  contents: write
+  pull-requests: write
+  deployments: read
+
+jobs:
+  update-docs:
+    name: update-docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Render helm docs inside the README.md and push changes back to PR branch
+        uses: netfoundry/helm-docs-action@v1
+        with:
+          working-dir: charts/home-assistant
+          git-push: "true"
