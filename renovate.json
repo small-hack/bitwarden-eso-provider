@@ -10,13 +10,16 @@
                 "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
             ],
             "datasourceTemplate": "docker"
-        },
+        }
+    ],
+  "customManagers": [
         {
-            "fileMatch": ["docker/Dockerfile"],
-            "matchStrings": [
-                "#\\s?renovate: depName=(?<depName>.*?)\\s?BW_CLI_VERSION=\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
-            ],
-            "datasourceTemplate": "github-releases"
+            "customType": "regex",
+            "description": "Update BW_CLI_VERSION in Dockerfile",
+            "fileMatch": ["(^|/)Dockerfile$"],
+            "matchStrings": ["ENV BW_CLI_VERSION=(?<currentValue>.*?)\\n"],
+            "depNameTemplate": "@bitwarden/cli",
+            "datasourceTemplate": "npm"
         }
     ],
     "packageRules": [
