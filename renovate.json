@@ -7,14 +7,14 @@
         {
             "fileMatch": ["(^|/)Chart\\.yaml$"],
             "matchStrings": [
-                "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)",
+                "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
             ],
             "datasourceTemplate": "docker"
         },
         {
             "fileMatch": ["docker/Dockerfile"],
             "matchStrings": [
-                "#\\s?renovate: depName=(?<depName>.*?)\\s?BW_CLI_VERSION=\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)",
+                "#\\s?renovate: depName=(?<depName>.*?)\\s?BW_CLI_VERSION=\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
             ],
             "datasourceTemplate": "github-releases"
         }
@@ -28,17 +28,6 @@
             "scripts/bump-chart-version.sh '{{{parentDir}}}' '{{{updateType}}}'"
           ],
           "fileFilters": ["**/Chart.yaml"],
-          "executionMode": "branch"
-        }
-      },
-      {
-        "description": "Bump bitwarden release version.",
-        "matchManagers": ["regex"],
-        "postUpgradeTasks": {
-          "commands": [
-            "scripts/bump-github-release.sh '{{{updateType}}}'"
-          ],
-          "fileFilters": ["docker/Dockerfile"],
           "executionMode": "branch"
         }
       }
