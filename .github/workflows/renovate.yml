@@ -29,4 +29,6 @@ jobs:
         uses: renovatebot/github-action@v40.1.11
         with:
           token: '${{ steps.get_token.outputs.token }}'
+        env:
+          LOG_LEVEL: 'debug'
           configurationFile: .github/renovate-config.json
