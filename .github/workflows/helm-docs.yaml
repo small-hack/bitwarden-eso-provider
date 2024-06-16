@@ -3,8 +3,8 @@ name: Generate helm docs
 on:
   pull_request:
     paths:
-      - 'charts/home-assistant/Chart.yaml'
-      - 'charts/home-assistant/values.yaml'
+      - 'charts/bitwarden-eso-provider/Chart.yaml'
+      - 'charts/bitwarden-eso-provider/values.yaml'
 
 permissions:
   contents: write
