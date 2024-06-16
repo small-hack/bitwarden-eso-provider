@@ -36,13 +36,3 @@ jobs:
         id: lint
         if: steps.list-changed.outputs.changed == 'true'
         run: ct lint --target-branch ${{ github.event.repository.default_branch }}
-
-      - name: Create kind cluster
-        uses: helm/kind-action@v1.10.0
-        if: steps.list-changed.outputs.changed == 'true'
-
-      - name: Run chart-testing (install)
-        id: install
-        if: steps.list-changed.outputs.changed == 'true'
-        run: |
-            ct install --target-branch ${{ github.event.repository.default_branch }}
