@@ -79,7 +79,7 @@ helm install my-release bitwarden-eso-provider/bitwarden-eso-provider --set bitw
 ```
 
 # Example ExternalSecret
-By default we will create two `ClusterSecretStores` for you that can then be accessed when you create a secret like [this](./examples/example-secret.yaml), but also printed below here:
+By default we will create three `ClusterSecretStores` for you (logins, fields & notes) that can then be accessed when you create a secret like [this](./examples/example-secret.yaml), but also printed below here:
 
 ```yaml
 ---
@@ -116,7 +116,7 @@ spec:
         property: password
 ```
 
-## Testing 
+## Testing
 
 Searching for items has to be done using JSONpath, you will need to install a utility for that, we use [bashtools/JSONPath.sh](https://github.com/bashtools/JSONPath.sh).
 
