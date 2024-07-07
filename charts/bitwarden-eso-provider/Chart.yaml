@@ -18,7 +18,7 @@ type: application
 version: 0.9.1
 
 # renovate: image=jessebot/bweso
-appVersion: "0.8.0"
+appVersion: "0.7.0"
 
 maintainers:
   - name: "cloudymax"
