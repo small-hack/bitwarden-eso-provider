@@ -95,3 +95,19 @@ Create the url string that will be used to query bitwarden
 {{- define "bitwarden-eso-provider.clusterSecretStore.fieldsJsonPath" -}}
 {{- printf "$.data.data[0].fields[?(@.name==\"{{ .remoteRef.property }}\")].value" | quote }}
 {{- end }}
+
+{{/*
+Create the url string that will be used to query Bitwarden:
+- cluster-secret-store notes url
+*/}}
+{{- define "bitwarden-eso-provider.clusterSecretStore.notesUrl" -}}
+{{- printf "http://%s.%s.svc.cluster.local:%s/list/object/items?search={{ .remoteRef.key }}" .Release.Name .Release.Namespace (.Values.service.port | toString) | quote }}
+{{- end }}
+
+{{/*
+Create the url string that will be used to query bitwarden
+- cluster-secret-store notes jsonpath
+*/}}
+{{- define "bitwarden-eso-provider.clusterSecretStore.notesJsonPath" -}}
+{{- printf "$.data.data[0].notes" | quote }}
+{{- end }}
