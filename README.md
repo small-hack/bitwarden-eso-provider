@@ -1,5 +1,5 @@
 # Bitwarden External Secrets Operator Provider Helm Chart
-<a href="https://github.com/small-hack/bitwarden-eso-provider/releases"><img src="https://img.shields.io/github/v/release/small-hack/bitwarden-eso-provider?style=plastic&labelColor=blue&color=036440&logo=GitHub&logoColor=white"></a>
+<a href="https://github.com/small-hack/bitwarden-eso-provider/releases"><img src="https://img.shields.io/github/v/release/small-hack/bitwarden-eso-provider?style=plastic&labelColor=blue&color=036440&logo=GitHub&logoColor=white"></a> [![](https://img.shields.io/docker/pulls/jessebot/bweso.svg)](https://cloud.docker.com/u/jessebot/repository/docker/jessebot/bweso)
 
 Deploy a Bitwarden Provider for the [External Secrets Operator](https://external-secrets.io) so you can use [`ExternalSecrets`](https://external-secrets.io/latest/introduction/overview/#externalsecret) from Bitwarden to create Kubernetes Secrets 🎉 <sub>This project is neither directly affiliated with the External Secrets Operator, nor the official Bitwarden®️ at this time.</sub>
 
