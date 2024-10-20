@@ -1,6 +1,6 @@
-FROM debian:bookworm
+FROM debian:12.7
 
-ENV BW_CLI_VERSION=2024.6.0
+ENV BW_CLI_VERSION=2024.9.0
 
 RUN apt update && \
     apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
