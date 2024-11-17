@@ -62,6 +62,7 @@ jobs:
           context: docker
           platforms: |
             linux/amd64
+            linux/arm64
           tags: |
             jessebot/bweso:${{ github.ref_name }}
 
