@@ -2,7 +2,7 @@ FROM debian:12.8
 
 ENV BW_CLI_VERSION=2024.9.0
 
-RUN apt update && \
+RUN apt-get update && \
     apt list --upgradeable | grep security | cut -f1 -d '/' | xargs apt-get install --no-install-recommends -y && \
     apt-get install --no-install-recommends -y wget unzip ca-certificates && \
     wget --show-progress --progress bar https://github.com/bitwarden/clients/releases/download/cli-v${BW_CLI_VERSION}/bw-linux-${BW_CLI_VERSION}.zip && \
