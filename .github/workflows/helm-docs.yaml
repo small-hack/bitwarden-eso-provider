@@ -22,7 +22,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Render helm docs inside the README.md and push changes back to PR branch
-        uses: netfoundry/helm-docs-action@v1
+        uses: jessebot/helm-docs-action@0.0.1
         with:
           working-dir: charts/bitwarden-eso-provider
           git-push: "true"
