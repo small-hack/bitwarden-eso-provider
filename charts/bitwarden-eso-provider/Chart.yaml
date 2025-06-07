@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.15.0
+version: 1.0.0
 
 # renovate: image=jessebot/bweso
 appVersion: 0.16.0
@@ -24,6 +24,7 @@ maintainers:
   - name: "cloudymax"
     email: "emax@cloudydev.net"
     url: "https://github.com/cloudymax/"
+
   - name: "jessebot"
     email: "jessebot@linux.com"
     url: "https://github.com/jessebot/"
