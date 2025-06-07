@@ -3,6 +3,23 @@ entries:
   bitwarden-eso-provider:
   - apiVersion: v2
     appVersion: 0.16.0
+    created: "2025-06-07T15:34:00.967885673Z"
+    description: Helm chart to use Bitwarden as a Provider for External Secrets Operator
+    digest: ad7d9c9d23e5aacc5f987acce4b883919d977a79e14062e29b63cd57efb7f15e
+    maintainers:
+    - email: emax@cloudydev.net
+      name: cloudymax
+      url: https://github.com/cloudymax/
+    - email: jessebot@linux.com
+      name: jessebot
+      url: https://github.com/jessebot/
+    name: bitwarden-eso-provider
+    type: application
+    urls:
+    - https://github.com/small-hack/bitwarden-eso-provider/releases/download/bitwarden-eso-provider-1.0.0/bitwarden-eso-provider-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 0.16.0
     created: "2025-04-07T08:02:25.361891669Z"
     description: Helm chart to use Bitwarden as a Provider for External Secrets Operator
     digest: bdef95ef6b73d48f5fe7e6773b329d56cb4060bb76b5c2e4bcc2db52de1c1c34
@@ -409,4 +426,4 @@ entries:
     urls:
     - https://github.com/jessebot/bitwarden-eso-provider/releases/download/bitwarden-eso-provider-0.1.0/bitwarden-eso-provider-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-07T08:02:25.362068326Z"
+generated: "2025-06-07T15:34:00.968092201Z"
