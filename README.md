@@ -83,7 +83,7 @@ By default we will create three `ClusterSecretStores` for you (logins, fields & 
 
 ```yaml
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   # name of the ExternalSecret itself
